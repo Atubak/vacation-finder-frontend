@@ -2,7 +2,7 @@
     Alpine huts (alpine_hut)
     Campsites (campsites)
     Hostels (hostels)
-    Hotels (other_hotels)
+x    Hotels (other_hotels)
     Motels (motels)
     Resorts (resorts)
     Villas and chalet
@@ -14,11 +14,11 @@
     nightclubs (nightclubs)
 
 (amusements)
-    amusement parks (amusenænt_parks)
+x    amusement parks (amusenænt_parks)
     baths and saunas
     ferris wheels (ferris_wfieels)
     roller coasters (roller_coasters)
-    water parks
+x    water parks
 
 
 Architecture (architecture)
@@ -33,11 +33,11 @@ Architecture (architecture)
     Towers (towers)
 
 Cutural (cultural)
-    Museums (museum*   
+x    Museums (museum*   
     Theaters and entertainments (theatres_aridzentertamments
-        circuses (circuses)
+x        circuses (circuses)
         concert halls (concert_hans)
-        movie theatres (cinemas)
+x        movie theatres (cinemas)
         opera houses (opera_houses)
         other theatres (other _ theatres)
         puppetries (puppetries)
@@ -87,7 +87,7 @@ Cutural (cultural)
     Railway stations (railway stations
 
 (natural)
-    Beaches (beaches)
+x    Beaches (beaches)
     Geological formations (geological_formaüons)
         canyons (canyons)
         caves (caves)
@@ -129,14 +129,14 @@ Cutural (cultural)
 (tourist facilities)
     Banks (banks)
     Foods (foods)
-        Bars (bars)
+x        Bars (bars)
         Biergartens (biergartens)
-        Cafes (cafes)
+x        Cafes (cafes)
         Fast food (fast food)
         Food courts (food _ courts)
         Picnic sites (picnic site)
-        Pubs (pubs)
-        Restaurants (restaurants)
+x        Pubs (pubs)
+x        Restaurants (restaurants)
     Shops (shops)
         Malls (malls)
         Marketplaces (marketplaces)
