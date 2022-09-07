@@ -1,10 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Home, Search, Results, Details, User } from "./pages";
+import { ButtonAppBar } from "./components/";
 
 function App() {
   return (
     <div className="App">
+      <ButtonAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
