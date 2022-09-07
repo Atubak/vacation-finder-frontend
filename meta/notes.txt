@@ -33,7 +33,7 @@ pages needed:
     -results page
     -details page
     -user page
-    -discover page
+    -discover page* not required
     -other user's page
 
 
