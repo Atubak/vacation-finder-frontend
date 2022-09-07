@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Home, Search, Results, Details, User } from "./pages";
-import { ButtonAppBar } from "./components/";
+import { ButtonAppBar, Footer } from "./components/";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Route path="/details" element={<Details />} />
         <Route path="/user" element={<User />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

@@ -1,3 +1,3 @@
 import ButtonAppBar from "./ButtonAppBar";
-
-export { ButtonAppBar };
+import Footer from "./Footer";
+export { ButtonAppBar, Footer };

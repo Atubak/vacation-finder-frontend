@@ -12,7 +12,7 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -20,13 +20,28 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          </IconButton> */}
+          <Typography
+            style={{ textAlign: "left" }}
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
+            VacaLoca
           </Typography>
-          <Button color="inherit">Lol</Button>
+          <Typography
+            style={{ textAlign: "left" }}
+            variant="p"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
+            The Vacation Locator
+          </Typography>
+          <Button color="inherit">Log In</Button>
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
+
+// just trying out, will probably switch to styled components or something else

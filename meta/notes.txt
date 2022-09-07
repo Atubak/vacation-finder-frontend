@@ -13,7 +13,7 @@ user stories:
 
 5. as a user I want to be able to comment on a location
 
-
+!!!adjust db so that it can facilitate user <-> user, many-to-many relations
 
 
 business logic:
