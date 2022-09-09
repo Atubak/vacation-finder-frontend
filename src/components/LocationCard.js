@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 //mui
 import Card from "@mui/material/Card";
@@ -12,10 +14,13 @@ import { CardActionArea } from "@mui/material";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import { geoCodingAPIKey } from "../config/constants";
+import { storeSelectedLocation } from "../store/locations/slice";
 
 export default function LocationCard({ result }) {
   const [locationInfo, setLocationInfo] = useState({});
   console.log("usestate:", locationInfo);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getLocationInfo = async () => {
@@ -44,7 +49,15 @@ export default function LocationCard({ result }) {
 
   return (
     <div id="LocationCard">
-      <Card sx={{ maxWidth: 150 }}>
+      <Card
+        sx={{ maxWidth: 150 }}
+        onClick={() => {
+          dispatch(
+            storeSelectedLocation({ ...result, info: locationInfo.info })
+          );
+          navigate(`/details`);
+        }}
+      >
         <CardActionArea>
           <CardMedia
             component="img"
