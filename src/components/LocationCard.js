@@ -8,6 +8,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
+//leaflet
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
 import { geoCodingAPIKey } from "../config/constants";
 
 export default function LocationCard({ result }) {
@@ -20,12 +23,17 @@ export default function LocationCard({ result }) {
         const response = await axios.get(
           `https://api.geoapify.com/v1/geocode/reverse?lat=${result.dataPoints[0].lat}&lon=${result.dataPoints[0].lon}&type=city&apiKey=${geoCodingAPIKey}`
         );
-        console.log(response.data.features[0].properties);
 
-        const { city, state, county, country } =
+        const { city, state, county, country, country_code, ...rest } =
           response.data.features[0].properties;
 
-        setLocationInfo({ city, state, county, country });
+        let info = `${city}, ${state}, ${county}, ${country}`.replace(
+          /undefined,/g,
+          ""
+        );
+
+        console.log("getlocationinfo called ", info);
+        setLocationInfo({ info, country_code });
       } catch (e) {
         console.log(e.message);
       }
@@ -38,17 +46,15 @@ export default function LocationCard({ result }) {
     <div id="LocationCard">
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
-          {/* <CardMedia
+          <CardMedia
             component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
-          /> */}
+            image={`https://countryflagsapi.com/svg/${locationInfo.country_code}`}
+            alt={`flag of ${locationInfo.country}`}
+          />
+
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {`${locationInfo.city}, ${
-                locationInfo.state || locationInfo.county
-              }, ${locationInfo.country}`}
+              {locationInfo.info}
             </Typography>
           </CardContent>
         </CardActionArea>
