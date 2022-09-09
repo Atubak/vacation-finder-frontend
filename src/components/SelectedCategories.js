@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 //material ui
 import { Modal, Box, CircularProgress } from "@mui/material";
+import Button from "@mui/material/Button";
 
 //selectors
 import {
@@ -58,7 +59,9 @@ export default function SelectedCategories() {
       {chosenCategories.map((cat, index) => {
         return <SingleSelectedCategory key={index} cat={cat} />;
       })}
-      <button
+      <Button
+        style={{ color: "#5d5957", borderColor: "#6c85bd" }}
+        variant="outlined"
         disabled={chosenCategories < 1 ? true : false}
         onClick={() => {
           setOpen(true);
@@ -68,7 +71,7 @@ export default function SelectedCategories() {
         }}
       >
         GENERATE SEARCH
-      </button>
+      </Button>
 
       <Modal
         open={open}

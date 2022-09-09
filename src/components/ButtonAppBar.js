@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 const appBarStyle = {
   backgroundColor: "#fcfcfd",
   color: "#5d5957",
+  boxShadow: "0px -5px 20px black",
 };
 
 export default function ButtonAppBar() {
@@ -19,15 +20,6 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={appBarStyle}>
         <Toolbar>
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <img src={logoWordGood} alt="" height="64px" />
           <Typography
             style={{ textAlign: "left", color: `${appBarStyle.color}` }}
@@ -60,5 +52,3 @@ export default function ButtonAppBar() {
     </Box>
   );
 }
-
-// just trying out, will probably switch to styled components or something else

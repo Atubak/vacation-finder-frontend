@@ -14,6 +14,11 @@ import { getAllCategories } from "../store/locations/thunks";
 import { storeQueryCategories } from "../store/locations/slice";
 import SelectedCategories from "../components/SelectedCategories";
 
+//style
+const btnStyle = {
+  backgroundColor: "#6c85bd",
+};
+
 export default function Search() {
   const dispatch = useDispatch();
 
@@ -41,6 +46,7 @@ export default function Search() {
               style={{ margin: "10px 0" }}
             >
               <Button
+                style={btnStyle}
                 variant="contained"
                 onClick={(e) => {
                   dispatch(storeQueryCategories(cat));
