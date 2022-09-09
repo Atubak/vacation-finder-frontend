@@ -60,8 +60,8 @@ export default function SelectedCategories() {
         return <SingleSelectedCategory key={index} cat={cat} />;
       })}
       <Button
-        style={{ color: "#5d5957", borderColor: "#6c85bd" }}
-        variant="outlined"
+        style={{ color: "#6c85bd", backgroundColor: "#edd273" }}
+        variant="contained"
         disabled={chosenCategories < 1 ? true : false}
         onClick={() => {
           setOpen(true);

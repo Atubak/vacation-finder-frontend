@@ -9,6 +9,9 @@ import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
+import { Map } from "../components";
+
+//selectors
 import { useSelector } from "react-redux";
 import { selectSelectedLocation } from "../store/locations/selectors";
 
@@ -35,7 +38,7 @@ export default function Details() {
                 id="heartIcon"
                 style={{
                   flex: "1",
-                  color: `${heart ? "pink" : "black"}`,
+                  color: `${heart ? "hotpink" : "black"}`,
                 }}
                 onClick={() => setHeart(heart ? false : true)}
               >
@@ -48,9 +51,9 @@ export default function Details() {
             </CardContent>
           </Card>
         </div>
-        <div id="locationMap">
-          {/* show a map with all location points on it and info on click/hover, perhaps leaflet  https://portfolio-utils.netlify.app/leaflet */}
-        </div>
+
+        <Map />
+
         <div id="booking">
           <h3>Check out some accomodations on booking.com here</h3>
           {/* can show a booking.com api insert here, have to create an affiliate link */}

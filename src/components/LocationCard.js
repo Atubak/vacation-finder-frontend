@@ -10,9 +10,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-//leaflet
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
 import { geoCodingAPIKey } from "../config/constants";
 import { storeSelectedLocation } from "../store/locations/slice";
 
