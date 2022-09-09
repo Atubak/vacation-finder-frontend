@@ -20,9 +20,23 @@ export default function Results() {
   return (
     <div
       id="Resultspage"
-      style={{ display: "flex", justifyContent: "space-around" }}
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        height: `calc(100vh - 64px - 20px)`,
+      }}
     >
-      <div id="resultsDiv">
+      <div
+        id="resultsDiv"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "30px",
+          maxWidth: "650px",
+          justifyContent: "center",
+          padding: "50px 0px",
+        }}
+      >
         {/* consist of a list of cards with each location and some basic info */}
         {/* locations should have a like button on them, might be good to make it a component so that details page can also use it */}
         {typeof queryResults === "string" ? (
@@ -37,7 +51,6 @@ export default function Results() {
           })
         )}
       </div>
-      {/* HAVE TO DELETE SELECTED CATEGORIESIN SEARCH PAGE AND REPLACE IT WITH THIS COMPONENT  */}
 
       <SelectedCategories style={{ flex: 2 }} />
     </div>

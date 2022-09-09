@@ -44,7 +44,7 @@ export default function LocationCard({ result }) {
 
   return (
     <div id="LocationCard">
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 150 }}>
         <CardActionArea>
           <CardMedia
             component="img"
@@ -53,7 +53,7 @@ export default function LocationCard({ result }) {
           />
 
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="caption" component="div">
               {locationInfo.info}
             </Typography>
           </CardContent>
