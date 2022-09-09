@@ -13,6 +13,7 @@ import {
 //thunks/actions
 import { getResults } from "../store/locations/thunks";
 import { useNavigate } from "react-router-dom";
+import { clearResults } from "../store/locations/slice";
 
 //components
 import SingleSelectedCategory from "./SingleSelectedCategory";
@@ -62,6 +63,7 @@ export default function SelectedCategories() {
         onClick={() => {
           setOpen(true);
           setAllowNavigation(true);
+          dispatch(clearResults());
           dispatch(getResults());
         }}
       >

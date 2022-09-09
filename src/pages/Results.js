@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   // selectQueryCategories,
   selectQueryResults,
@@ -11,18 +10,12 @@ import { LocationCard } from "../components";
 //selectors
 
 //thunks/actions
-import { getResults } from "../store/locations/thunks";
+
 import SelectedCategories from "../components/SelectedCategories";
 
 export default function Results() {
-  const dispatch = useDispatch();
-
   const queryResults = useSelector(selectQueryResults());
   // const chosenCategories = useSelector(selectQueryCategories());
-
-  useEffect(() => {
-    dispatch(getResults());
-  }, [dispatch]);
 
   return (
     <div
