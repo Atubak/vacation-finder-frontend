@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <div id="Homepage">
       <div id="bigButton">
-        <button>Click here to start your search!</button>
+        <Link to={"/search"}>
+          <button>Click here to start your search!</button>
+        </Link>
         <br />
         <small>no account needed to search</small>
       </div>
