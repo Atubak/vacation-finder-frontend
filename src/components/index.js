@@ -3,4 +3,12 @@ import Footer from "./Footer";
 import LocationCard from "./LocationCard";
 import SingleSelectedCategory from "./SingleSelectedCategory";
 import Map from "./Map";
-export { ButtonAppBar, Footer, LocationCard, SingleSelectedCategory, Map };
+import LocationPictures from "./LocationPictures";
+export {
+  ButtonAppBar,
+  Footer,
+  LocationCard,
+  SingleSelectedCategory,
+  Map,
+  LocationPictures,
+};

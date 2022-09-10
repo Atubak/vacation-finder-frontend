@@ -9,11 +9,23 @@ import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-import { Map } from "../components";
+//components
+import { LocationPictures, Map } from "../components";
 
 //selectors
 import { useSelector } from "react-redux";
 import { selectSelectedLocation } from "../store/locations/selectors";
+
+const locInfoStyle = {
+  margin: "50px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "30px",
+};
+
+const detailPStyle = {
+  display: "flex",
+};
 
 export default function Details() {
   const selectedLocation = useSelector(selectSelectedLocation());
@@ -21,10 +33,10 @@ export default function Details() {
   const [heart, setHeart] = useState(false);
 
   return (
-    <div id="Details">
-      <div id="locationInfo">
+    <div id="Details" style={detailPStyle}>
+      <div id="locationInfo" style={locInfoStyle}>
         <div id="infoText">
-          <Card sx={{ maxWidth: 575 }}>
+          <Card sx={{ maxWidth: "60vw" }}>
             <CardContent sx={{ display: "flex", alignItems: "center" }}>
               <Typography
                 sx={{ fontSize: 24, flex: 3 }}
@@ -53,12 +65,9 @@ export default function Details() {
         </div>
 
         <Map />
-
-        <div id="booking">
-          <h3>Check out some accomodations on booking.com here</h3>
-          {/* can show a booking.com api insert here, have to create an affiliate link */}
-        </div>
       </div>
+
+      <LocationPictures />
     </div>
   );
 }

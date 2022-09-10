@@ -21,7 +21,7 @@ export default function Map() {
           width: "60vw",
           maxWidth: "1000px",
           maxHeight: "800px",
-          margin: "0px 19.5%",
+          // margin: "0px 19.5%",
         }}
         center={[
           selectedLocation.dataPoints[0].lat,
