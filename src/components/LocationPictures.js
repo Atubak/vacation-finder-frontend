@@ -56,7 +56,11 @@ export default function LocationPictures() {
     setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === pics.length - 1 ? 0 : prevIndex + 1
+          prevIndex === pics.length - 1
+            ? 0
+            : pics.length === 1
+            ? 0
+            : prevIndex + 1
         ),
       delay
     );
@@ -84,8 +88,6 @@ export default function LocationPictures() {
     alignItems: "center",
   };
 
-  const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-
   return (
     <div className="slideshow" style={slideShow}>
       <div
@@ -99,7 +101,7 @@ export default function LocationPictures() {
           return (
             <div className="slide" key={index} style={slide}>
               <img src={pic.url} alt={pic.caption} style={{ width: "300px" }} />
-              <p>{pic.caption}</p>
+              <p style={{ whiteSpace: "normal" }}>{pic.caption}</p>
             </div>
           );
         })}

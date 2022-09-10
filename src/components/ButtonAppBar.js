@@ -46,7 +46,18 @@ export default function ButtonAppBar() {
           >
             The Vacation Locator
           </Typography>
-          <Button color="inherit">Log In</Button>
+          <Link to={"/login"}>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#edd273",
+                color: "#5d5957",
+                textDecoration: "",
+              }}
+            >
+              Log In
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
