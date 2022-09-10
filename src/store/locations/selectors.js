@@ -2,6 +2,8 @@ export const selectAllCategories = () => (reduxState) =>
   reduxState.locations.allCategories;
 export const selectSelectedLocation = () => (reduxState) =>
   reduxState.locations.selectedLocation;
+export const selectSelectedLocationDataPoints = () => (reduxState) =>
+  reduxState.locations.selectedLocation.dataPoints;
 export const selectQueryCategories = () => (reduxState) =>
   reduxState.locations.query.categories;
 export const selectQueryResults = () => (reduxState) =>

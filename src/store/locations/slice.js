@@ -35,6 +35,9 @@ export const locationsSlice = createSlice({
     clearResults: (state, action) => {
       state.query.results = [];
     },
+    storeSelectedLocation: (state, action) => {
+      state.selectedLocation = action.payload;
+    },
   },
 });
 
@@ -45,6 +48,7 @@ export const {
   clearResults,
   clearQueryCategories,
   removeQueryCategory,
+  storeSelectedLocation,
 } = locationsSlice.actions;
 
 export default locationsSlice.reducer;

@@ -16,6 +16,8 @@ export default function SingleSelectedCategory({ cat }) {
       style={{ width: "128px", margin: "10px auto" }}
     >
       <Button
+        style={{ color: "#6c85bd", backgroundColor: "#fcfcfd" }}
+        variant="contained"
         onMouseEnter={() => setClearBtn(true)}
         onMouseLeave={() => setClearBtn(false)}
         onClick={() => dispatch(removeQueryCategory(cat))}

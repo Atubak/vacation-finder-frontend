@@ -41,3 +41,13 @@ pages needed:
 local db categories:
 see categories file
 
+
+outside tech used:
+-geodesy
+-material ui
+-leaflet
+-used a background generator by Louis Hoebregts
+https://wweb.dev/resources/animated-css-background-generator/
+-geoapify
+-countryflagsapi.com
+-wikidata 
