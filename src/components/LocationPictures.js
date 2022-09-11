@@ -15,8 +15,6 @@ export default function LocationPictures() {
   const [index, setIndex] = useState(0);
   const delay = 2500;
 
-  console.log(pics);
-
   useEffect(() => {
     const getPics = () => {
       let newPics = [];
@@ -38,7 +36,7 @@ export default function LocationPictures() {
           // final img url
           const url = `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${fileName}`;
 
-          const newImg = { url, caption: `${dataP.cat} ${dataP.name}` };
+          const newImg = { url, caption: `${dataP.name}` };
           newPics = [...newPics, newImg];
 
           setPics(newPics);
@@ -56,7 +54,11 @@ export default function LocationPictures() {
     setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === pics.length - 1 ? 0 : prevIndex + 1
+          prevIndex === pics.length - 1
+            ? 0
+            : pics.length === 1
+            ? 0
+            : prevIndex + 1
         ),
       delay
     );
@@ -84,8 +86,6 @@ export default function LocationPictures() {
     alignItems: "center",
   };
 
-  const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-
   return (
     <div className="slideshow" style={slideShow}>
       <div
@@ -99,7 +99,7 @@ export default function LocationPictures() {
           return (
             <div className="slide" key={index} style={slide}>
               <img src={pic.url} alt={pic.caption} style={{ width: "300px" }} />
-              <p>{pic.caption}</p>
+              <p style={{ whiteSpace: "normal" }}>{pic.caption}</p>
             </div>
           );
         })}

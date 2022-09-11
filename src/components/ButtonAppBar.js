@@ -8,6 +8,10 @@ import Button from "@mui/material/Button";
 import logoWordGood from "../icons/logocow-color.png";
 
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../store/user/slice";
+import { useSelector } from "react-redux";
+import { selectToken } from "../store/user/selectors";
 
 const appBarStyle = {
   backgroundColor: "#fcfcfd",
@@ -15,7 +19,16 @@ const appBarStyle = {
   boxShadow: "0px -5px 20px black",
 };
 
+const loginBtnStyle = {
+  backgroundColor: "#ff6992",
+  color: "#ffffff",
+};
+
 export default function ButtonAppBar() {
+  const dispatch = useDispatch();
+
+  const token = useSelector(selectToken());
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={appBarStyle}>
@@ -46,7 +59,22 @@ export default function ButtonAppBar() {
           >
             The Vacation Locator
           </Typography>
-          <Button color="inherit">Log In</Button>
+
+          {token ? (
+            <Button
+              sx={loginBtnStyle}
+              variant="outlined"
+              onClick={() => dispatch(logOut())}
+            >
+              Logout
+            </Button>
+          ) : (
+            <Link to={"/login"}>
+              <Button variant="contained" sx={loginBtnStyle}>
+                Log In
+              </Button>
+            </Link>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
