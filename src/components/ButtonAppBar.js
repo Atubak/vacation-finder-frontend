@@ -7,11 +7,13 @@ import Button from "@mui/material/Button";
 
 import logoWordGood from "../icons/logocow-color.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "../store/user/slice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../store/user/selectors";
+
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const appBarStyle = {
   backgroundColor: "#fcfcfd",
@@ -22,10 +24,12 @@ const appBarStyle = {
 const loginBtnStyle = {
   backgroundColor: "#ff6992",
   color: "#ffffff",
+  margin: "0 5px",
 };
 
 export default function ButtonAppBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const token = useSelector(selectToken());
 
@@ -64,7 +68,22 @@ export default function ButtonAppBar() {
             <Button
               sx={loginBtnStyle}
               variant="outlined"
-              onClick={() => dispatch(logOut())}
+              onClick={() => navigate("/user")}
+            >
+              <FavoriteBorderIcon />
+            </Button>
+          ) : (
+            ""
+          )}
+
+          {token ? (
+            <Button
+              sx={loginBtnStyle}
+              variant="outlined"
+              onClick={() => {
+                dispatch(logOut());
+                navigate("/");
+              }}
             >
               Logout
             </Button>

@@ -39,12 +39,13 @@ export default function Details() {
   const [heart, setHeart] = useState(false);
 
   useEffect(() => {
-    const locIdArray = profile.locations.map((loc) => loc.id);
+    if (!profile) return setHeart(false);
+    const locIdArray = profile?.locations.map((loc) => loc.id);
 
-    locIdArray.every((locId) => locId !== selectedLocation.id)
+    locIdArray?.every((locId) => locId !== selectedLocation.id)
       ? setHeart(false)
       : setHeart(true);
-  }, [selectedLocation, profile.locations]);
+  }, [selectedLocation, profile?.locations, profile]);
 
   return (
     <div id="Details" style={detailPStyle}>
@@ -65,10 +66,13 @@ export default function Details() {
                 style={{
                   flex: "1",
                   color: `${heart ? "#ff6992" : "black"}`,
+                  cursor: "pointer",
                 }}
                 onClick={() => dispatch(postFav())}
               >
-                {heart ? (
+                {!profile ? (
+                  ""
+                ) : heart ? (
                   <FavoriteIcon sx={{ fontSize: 40 }} />
                 ) : (
                   <FavoriteBorderIcon sx={{ fontSize: 40 }} />
