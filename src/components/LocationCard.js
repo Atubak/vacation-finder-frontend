@@ -15,7 +15,7 @@ import { storeSelectedLocation } from "../store/locations/slice";
 
 export default function LocationCard({ result }) {
   const [locationInfo, setLocationInfo] = useState({});
-  console.log("usestate:", locationInfo);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -29,12 +29,11 @@ export default function LocationCard({ result }) {
         const { city, state, county, country, country_code, ...rest } =
           response.data.features[0].properties;
 
-        let info = `${city}, ${state}, ${county}, ${country}`.replace(
+        let info = `${city}, ${county}, ${state}, ${country}`.replace(
           /undefined,/g,
           ""
         );
 
-        console.log("getlocationinfo called ", info);
         setLocationInfo({ info, country_code });
       } catch (e) {
         console.log(e.message);

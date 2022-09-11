@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../store/user/thunks";
 import { selectToken } from "../store/user/selectors";
 
+const style = {
+  borderColor: "#5d5957",
+  color: "#5d5957",
+  backgroundColor: "#edd273",
+};
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +36,7 @@ export const Login = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <Container>
-        <Title style={{ color: "#5d5957" }}>Login</Title>
+        <Title style={{ color: style.color }}>Login</Title>
         <form onSubmit={submitForm}>
           <Input
             placeholder="email"
@@ -44,14 +50,7 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <Button
-            type="submit"
-            style={{
-              borderColor: "#5d5957",
-              color: "#5d5957",
-              backgroundColor: "#edd273",
-            }}
-          >
+          <Button type="submit" style={style}>
             Login
           </Button>
         </form>

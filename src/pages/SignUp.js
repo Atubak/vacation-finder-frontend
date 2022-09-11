@@ -6,6 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { signUp } from "../store/user/thunks";
 import { selectToken } from "../store/user/selectors";
 
+const style = {
+  borderColor: "#5d5957",
+  color: "#5d5957",
+  backgroundColor: "#edd273",
+};
+
 export const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,8 +21,7 @@ export const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const token = useSelector(selectToken);
-
+  const token = useSelector(selectToken());
   useEffect(() => {
     if (token !== null) {
       navigate("/");
@@ -31,7 +36,7 @@ export const SignUp = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <Container>
-        <Title>Sign Up</Title>
+        <Title style={{ color: style.color }}>Sign Up</Title>
         <form onSubmit={submitForm}>
           <Input
             placeholder="name"
@@ -50,16 +55,11 @@ export const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <label>
-            Are you a realtor?
-            <input
-              type="checkbox"
-              checked={check}
-              onChange={(e) => setCheck(e.target.checked)}
-            />
-          </label>
+
           <br />
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit" style={style}>
+            Sign Up
+          </Button>
         </form>
       </Container>
     </div>

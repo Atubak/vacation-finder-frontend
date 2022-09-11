@@ -88,7 +88,7 @@ export const login = (email, password) => {
 export const getUserWithStoredToken = () => {
   return async (dispatch, getState) => {
     // get token from the state
-    const token = selectToken(getState());
+    const token = selectToken()(getState());
 
     // if we have no token, stop
     if (token === null) return;

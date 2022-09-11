@@ -45,6 +45,7 @@ see categories file
 outside tech used:
 -geodesy
 -material ui
+-slideshow by omar benseddik: https://tinloof.com/blog/how-to-build-an-auto-play-slideshow-with-react
 -leaflet
 -used a background generator by Louis Hoebregts
 https://wweb.dev/resources/animated-css-background-generator/

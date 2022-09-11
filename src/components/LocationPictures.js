@@ -15,8 +15,6 @@ export default function LocationPictures() {
   const [index, setIndex] = useState(0);
   const delay = 2500;
 
-  console.log(pics);
-
   useEffect(() => {
     const getPics = () => {
       let newPics = [];
@@ -38,7 +36,7 @@ export default function LocationPictures() {
           // final img url
           const url = `https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/${fileName}`;
 
-          const newImg = { url, caption: `${dataP.cat} ${dataP.name}` };
+          const newImg = { url, caption: `${dataP.name}` };
           newPics = [...newPics, newImg];
 
           setPics(newPics);

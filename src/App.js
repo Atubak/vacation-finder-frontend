@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Home, Search, Results, Details, User, Login, SignUp } from "./pages";
-import { ButtonAppBar, Footer } from "./components/";
+import { ButtonAppBar, Footer, MessageBox } from "./components/";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getUserWithStoredToken } from "./store/user/thunks";
@@ -20,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <ButtonAppBar />
+      <MessageBox />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />

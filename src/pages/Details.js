@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -12,9 +12,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 //components
 import { LocationPictures, Map } from "../components";
 
+import { useSelector, useDispatch } from "react-redux";
 //selectors
-import { useSelector } from "react-redux";
 import { selectSelectedLocation } from "../store/locations/selectors";
+import { selectUser } from "../store/user/selectors";
+
+//actions / thunks
+import { postFav } from "../store/locations/thunks";
 
 const locInfoStyle = {
   margin: "50px",
@@ -28,9 +32,19 @@ const detailPStyle = {
 };
 
 export default function Details() {
+  const dispatch = useDispatch();
   const selectedLocation = useSelector(selectSelectedLocation());
+  const profile = useSelector(selectUser());
 
   const [heart, setHeart] = useState(false);
+
+  useEffect(() => {
+    const locIdArray = profile.locations.map((loc) => loc.id);
+
+    locIdArray.every((locId) => locId !== selectedLocation.id)
+      ? setHeart(false)
+      : setHeart(true);
+  }, [selectedLocation, profile.locations]);
 
   return (
     <div id="Details" style={detailPStyle}>
@@ -50,9 +64,9 @@ export default function Details() {
                 id="heartIcon"
                 style={{
                   flex: "1",
-                  color: `${heart ? "hotpink" : "black"}`,
+                  color: `${heart ? "#ff6992" : "black"}`,
                 }}
-                onClick={() => setHeart(heart ? false : true)}
+                onClick={() => dispatch(postFav())}
               >
                 {heart ? (
                   <FavoriteIcon sx={{ fontSize: 40 }} />
