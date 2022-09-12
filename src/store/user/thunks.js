@@ -3,7 +3,13 @@ import axios from "axios";
 import { selectToken } from "./selectors";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
-import { loginSuccess, logOut, storePic, tokenStillValid } from "./slice";
+import {
+  loginSuccess,
+  logOut,
+  storeDescr,
+  storePic,
+  tokenStillValid,
+} from "./slice";
 
 export const signUp = (name, email, password, isRealtor) => {
   return async (dispatch, getState) => {
@@ -130,6 +136,26 @@ export const postPic = (url) => async (dispatch, getState) => {
 
     console.log(response.data);
     if (response.data === "success") return dispatch(storePic(url));
+    dispatch(showMessageWithTimeout("danger", false, response.data, 2000));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const postDescr = (descr) => async (dispatch, getState) => {
+  console.log(descr);
+  const token = selectToken()(getState());
+
+  try {
+    const response = await axios.patch(
+      `${apiUrl}/user/descr`,
+      { description: descr },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    console.log(response.data);
+    if (response.data === "success") return dispatch(storeDescr(descr));
+    dispatch(showMessageWithTimeout("danger", false, response.data, 2000));
   } catch (e) {
     console.log(e.message);
   }

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectUserFavs, selectUser } from "../store/user/selectors";
+import { selectUserFavs } from "../store/user/selectors";
 
 //components
 import { LocationCard, PicAndDescr, Friends } from "../components";
@@ -12,6 +12,7 @@ const favStyle = {
   gridColumnEnd: "7",
   gridRowStart: "4",
   gridRowEnd: "5",
+  minHeight: "400px",
 };
 
 const gridContainer = {
@@ -33,13 +34,19 @@ export default function User() {
       <div id="favList" style={favStyle}>
         {/* list all your fav locations here with the same cards as on the results page, also stored in db, need all locations of user including all datapoints */}
 
-        {userFavs.map((result, index) => {
-          return (
-            <div className="result" key={index} style={{ margin: "20px 0" }}>
-              <LocationCard result={result} />
-            </div>
-          );
-        })}
+        {userFavs.length < 1 ? (
+          <p style={{ color: "#ff6992" }}>
+            do a search to see your favorite locations here!
+          </p>
+        ) : (
+          userFavs.map((result, index) => {
+            return (
+              <div className="result" key={index} style={{ margin: "20px 0" }}>
+                <LocationCard result={result} />
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

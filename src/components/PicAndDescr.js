@@ -7,11 +7,26 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { postPic } from "../store/user/thunks";
+import { useState } from "react";
+import { Modal, Box } from "@mui/material";
+
+//thunks/actions
+import { postDescr, postPic } from "../store/user/thunks";
 
 export default function PicAndDescr() {
   const profile = useSelector(selectUser());
   const dispatch = useDispatch();
+
+  //state
+  const [descrPopUp, setDescrPopUp] = useState(false);
+  const [descr, setDescr] = useState(profile?.description || "");
+
+  const submit = (e) => {
+    e.preventDefault();
+    setDescrPopUp(false);
+    dispatch(postDescr(descr));
+    setDescr("");
+  };
 
   const uploadImage = async (e) => {
     const files = e.target.files;
@@ -57,7 +72,10 @@ export default function PicAndDescr() {
         />
 
         <img
-          src={profile.imgUrl}
+          src={
+            profile?.imgUrl ||
+            "https://i.pinimg.com/originals/6a/7b/0b/6a7b0b15659ff7b51efa21ab9d5f49da.jpg"
+          }
           alt="your nice face"
           style={{
             border: "4px solid #edd273",
@@ -89,34 +107,58 @@ export default function PicAndDescr() {
             style={{
               flex: "4",
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "left",
               alignItems: "center",
               position: "relative",
             }}
           >
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-            <h2
-              style={{
-                color: "red",
-                position: "absolute",
-                top: "30%",
-                transform: "rotate(340deg)",
-              }}
-            >
-              COMING SOON
-            </h2>
+            <Typography variant="body2">{profile?.description}</Typography>
           </CardContent>
           <CardActions
             style={{ display: "flex", justifyContent: "flex-end", flex: "1" }}
           >
-            <Button size="small">Edit</Button>
+            <Button onClick={() => setDescrPopUp(true)} size="small">
+              Edit
+            </Button>
           </CardActions>
         </Card>
       </div>
+
+      <Modal
+        open={descrPopUp}
+        onClose={() => setDescrPopUp(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            // width: 200,
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+            textAlign: "center",
+          }}
+        >
+          <form onSubmit={submit}>
+            <textarea
+              name="descr"
+              id="descr"
+              cols="30"
+              rows="10"
+              placeholder="write down whatever you want here"
+              onChange={(e) => setDescr(e.target.value)}
+              value={descr}
+            ></textarea>
+            <br />
+            <Button type="submit">Submit</Button>
+          </form>
+        </Box>
+      </Modal>
     </>
   );
 }

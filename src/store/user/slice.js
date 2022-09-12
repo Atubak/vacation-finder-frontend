@@ -25,10 +25,13 @@ export const userSlice = createSlice({
     storePic: (state, action) => {
       state.profile.imgUrl = action.payload;
     },
+    storeDescr: (state, action) => {
+      state.profile.description = action.payload;
+    },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid, storePic } =
+export const { loginSuccess, logOut, tokenStillValid, storePic, storeDescr } =
   userSlice.actions;
 
 export default userSlice.reducer;
