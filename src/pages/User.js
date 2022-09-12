@@ -1,40 +1,45 @@
 import { useSelector } from "react-redux";
-import { selectUserFavs } from "../store/user/selectors";
+import { selectUserFavs, selectUser } from "../store/user/selectors";
 
 //components
-import { LocationCard } from "../components";
+import { LocationCard, PicAndDescr, Friends } from "../components";
+
+const favStyle = {
+  display: "flex",
+  gap: "30px",
+  flexWrap: "wrap",
+  gridColumnStart: "4",
+  gridColumnEnd: "7",
+  gridRowStart: "4",
+  gridRowEnd: "5",
+};
+
+const gridContainer = {
+  display: "grid",
+  gridTemplateColumns: "1fr 5fr 2fr 5fr 5fr 5fr 1fr",
+  gridTemplateRows: "1fr 5fr 2fr auto 1fr",
+};
 
 export default function User() {
   const userFavs = useSelector(selectUserFavs());
+
   console.log(userFavs);
   return (
-    <div id="User">
-      <div id="userInfo">
-        {/* when clicking on either the image or the description, might be nice to be able to change the info */}
-        <div id="userImg">
-          <img src="" alt="your nice face" />
-        </div>
-        <div id="userDescription">
-          <p>some cool text to describe you</p>
-        </div>
-      </div>
+    <div id="User" style={gridContainer}>
+      <PicAndDescr />
 
-      <div id="friendsAndFavList">
-        <div id="friends">
-          {/* insert a list of friends here, needs a db req */}
-          {/* each friend is ideally clickable */}
-        </div>
-        <div id="favList">
-          {/* list all your fav locations here with the same cards as on the results page, also stored in db, need all locations of user including all datapoints */}
+      <Friends />
 
-          {userFavs.map((result, index) => {
-            return (
-              <div className="result" key={index} style={{ margin: "20px 0" }}>
-                <LocationCard result={result} />
-              </div>
-            );
-          })}
-        </div>
+      <div id="favList" style={favStyle}>
+        {/* list all your fav locations here with the same cards as on the results page, also stored in db, need all locations of user including all datapoints */}
+
+        {userFavs.map((result, index) => {
+          return (
+            <div className="result" key={index} style={{ margin: "20px 0" }}>
+              <LocationCard result={result} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

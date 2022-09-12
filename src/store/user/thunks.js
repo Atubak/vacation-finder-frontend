@@ -3,7 +3,7 @@ import axios from "axios";
 import { selectToken } from "./selectors";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
-import { loginSuccess, logOut, tokenStillValid } from "./slice";
+import { loginSuccess, logOut, storePic, tokenStillValid } from "./slice";
 
 export const signUp = (name, email, password, isRealtor) => {
   return async (dispatch, getState) => {
@@ -116,4 +116,21 @@ export const getUserWithStoredToken = () => {
       dispatch(appDoneLoading());
     }
   };
+};
+
+export const postPic = (url) => async (dispatch, getState) => {
+  const token = selectToken()(getState());
+
+  try {
+    const response = await axios.patch(
+      `${apiUrl}/user/pic`,
+      { imgUrl: url },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    console.log(response.data);
+    if (response.data === "success") return dispatch(storePic(url));
+  } catch (e) {
+    console.log(e.message);
+  }
 };

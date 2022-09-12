@@ -19,7 +19,14 @@ function App() {
   }, [dispatch]);
   return (
     <div className="App">
-      <ButtonAppBar />
+      <ButtonAppBar
+        style={{
+          gridColumnStart: "1",
+          gridColumnEnd: "2",
+          gridRowStart: "1",
+          gridRowEnd: "2",
+        }}
+      />
       <MessageBox />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -30,7 +37,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
-      <Footer />
+      <Footer
+        style={{
+          gridColumnStart: "1",
+          gridColumnEnd: "2",
+          gridRowStart: "3",
+          gridRowEnd: "4",
+        }}
+      />
 
       <div className="background">
         <span></span>

@@ -36,7 +36,7 @@ export default function Search() {
       style={{ display: "flex", justifyContent: "space-around" }}
     >
       <div id="categorySelection">
-        <h3>Click on the categories you want at your ~~~VacaLoca~~~</h3>
+        <h3>Click on the categories you want at your ~VacaLoca~</h3>
         {/* should get a list of all cats from redux on pageload and then map over it to render them on page, might need to be a different component*/}
         {allCategories.map((cat, index) => {
           return (
