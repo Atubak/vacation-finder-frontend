@@ -1,8 +1,12 @@
-import { useSelector } from "react-redux";
-import { selectUserFavs } from "../store/user/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserFavs, selectUserPage } from "../store/user/selectors";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 //components
 import { LocationCard, PicAndDescr, Friends } from "../components";
+import { getUserPage } from "../store/user/thunks";
+import { useState } from "react";
 
 const favStyle = {
   display: "flex",
@@ -22,24 +26,30 @@ const gridContainer = {
 };
 
 export default function User() {
-  const userFavs = useSelector(selectUserFavs());
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
-  console.log(userFavs);
-  return (
+  const userPage = useSelector(selectUserPage());
+
+  useEffect(() => {
+    dispatch(getUserPage(id));
+  }, [dispatch, id]);
+
+  return !userPage ? (
+    "loading"
+  ) : (
     <div id="User" style={gridContainer}>
-      <PicAndDescr />
+      <PicAndDescr userPage={userPage} />
 
-      <Friends />
+      <Friends userPage={userPage} />
 
       <div id="favList" style={favStyle}>
-        {/* list all your fav locations here with the same cards as on the results page, also stored in db, need all locations of user including all datapoints */}
-
-        {userFavs.length < 1 ? (
+        {userPage.locations.length < 1 ? (
           <p style={{ color: "#ff6992" }}>
             do a search to see your favorite locations here!
           </p>
         ) : (
-          userFavs.map((result, index) => {
+          userPage.locations.map((result, index) => {
             return (
               <div className="result" key={index} style={{ margin: "20px 0" }}>
                 <LocationCard result={result} />

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   token: localStorage.getItem("token"),
   profile: null,
+  userPage: null,
 };
 
 export const userSlice = createSlice({
@@ -28,10 +29,19 @@ export const userSlice = createSlice({
     storeDescr: (state, action) => {
       state.profile.description = action.payload;
     },
+    storeUserPage: (state, action) => {
+      state.userPage = action.payload;
+    },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid, storePic, storeDescr } =
-  userSlice.actions;
+export const {
+  loginSuccess,
+  logOut,
+  tokenStillValid,
+  storePic,
+  storeDescr,
+  storeUserPage,
+} = userSlice.actions;
 
 export default userSlice.reducer;

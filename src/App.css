@@ -57,7 +57,7 @@
   background: #fcfcfd;
   overflow: hidden;
   z-index: -1;
-  background-image: url();
+  /* background-image: url(); */
   filter: blur(8px);
   background: url("./icons/logocow-color.png") no-repeat center center fixed;
   -webkit-background-size: 50%;

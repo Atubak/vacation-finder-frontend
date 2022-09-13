@@ -9,6 +9,7 @@ import {
   storeDescr,
   storePic,
   tokenStillValid,
+  storeUserPage,
 } from "./slice";
 
 export const signUp = (name, email, password, isRealtor) => {
@@ -156,6 +157,16 @@ export const postDescr = (descr) => async (dispatch, getState) => {
     console.log(response.data);
     if (response.data === "success") return dispatch(storeDescr(descr));
     dispatch(showMessageWithTimeout("danger", false, response.data, 2000));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const getUserPage = (id) => async (dispatch, getState) => {
+  try {
+    const response = await axios.get(`${apiUrl}/user/${id}`);
+
+    dispatch(storeUserPage(response.data));
   } catch (e) {
     console.log(e.message);
   }

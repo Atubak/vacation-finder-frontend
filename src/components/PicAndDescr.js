@@ -13,13 +13,13 @@ import { Modal, Box } from "@mui/material";
 //thunks/actions
 import { postDescr, postPic } from "../store/user/thunks";
 
-export default function PicAndDescr() {
+export default function PicAndDescr({ userPage }) {
   const profile = useSelector(selectUser());
   const dispatch = useDispatch();
 
   //state
   const [descrPopUp, setDescrPopUp] = useState(false);
-  const [descr, setDescr] = useState(profile?.description || "");
+  const [descr, setDescr] = useState(userPage?.description || "");
 
   const submit = (e) => {
     e.preventDefault();
@@ -65,15 +65,19 @@ export default function PicAndDescr() {
         }}
         onClick={() => console.log("hellooo")}
       >
-        <input
-          type="file"
-          onChange={uploadImage}
-          style={{ position: "absolute", bottom: "-20px" }}
-        />
+        {profile.id === userPage.id ? (
+          <input
+            type="file"
+            onChange={uploadImage}
+            style={{ position: "absolute", bottom: "-20px" }}
+          />
+        ) : (
+          ""
+        )}
 
         <img
           src={
-            profile?.imgUrl ||
+            userPage?.imgUrl ||
             "https://i.pinimg.com/originals/6a/7b/0b/6a7b0b15659ff7b51efa21ab9d5f49da.jpg"
           }
           alt="your nice face"
@@ -112,14 +116,18 @@ export default function PicAndDescr() {
               position: "relative",
             }}
           >
-            <Typography variant="body2">{profile?.description}</Typography>
+            <Typography variant="body2">{userPage?.description}</Typography>
           </CardContent>
           <CardActions
             style={{ display: "flex", justifyContent: "flex-end", flex: "1" }}
           >
-            <Button onClick={() => setDescrPopUp(true)} size="small">
-              Edit
-            </Button>
+            {profile.id === userPage.id ? (
+              <Button onClick={() => setDescrPopUp(true)} size="small">
+                Edit
+              </Button>
+            ) : (
+              ""
+            )}
           </CardActions>
         </Card>
       </div>

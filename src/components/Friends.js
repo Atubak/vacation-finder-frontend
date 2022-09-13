@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { selectUsersFollowedByThisUser } from "../store/user/selectors";
+import { useEffect } from "react";
 //mui
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import CardContent from "@mui/material/CardContent";
 
-export default function Friends() {
+export default function Friends({ userPage }) {
+  const navigate = useNavigate();
+
   return (
     <div
       id="Friends"
@@ -18,6 +22,7 @@ export default function Friends() {
     >
       {/* insert a list of friends here, needs a db req */}
       {/* each friend is ideally clickable */}
+
       <Card
         sx={{
           display: "flex",
@@ -28,14 +33,39 @@ export default function Friends() {
           style={{
             flex: "4",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             alignItems: "center",
             position: "relative",
           }}
         >
-          <Typography variant="body2">
-            list of people this user follows
-          </Typography>
+          {userPage.followedUser.length < 1
+            ? "here you will see followed users"
+            : userPage.followedUser.map((user) => {
+                return (
+                  <div
+                    className="followedUser"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "20px",
+                      width: "100%",
+                      padding: "5px",
+                      borderBottom: "1px solid #edd273",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => navigate(`/user/${user.id}`)}
+                    key={user.id}
+                  >
+                    <img src={user.imgUrl} alt="" style={{ width: "30px" }} />
+                    <Typography
+                      style={{ fontWeight: "bolder" }}
+                      variant="body2"
+                    >
+                      {user.name}
+                    </Typography>
+                  </div>
+                );
+              })}
         </CardContent>
       </Card>
     </div>

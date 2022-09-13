@@ -11,7 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "../store/user/slice";
 import { useSelector } from "react-redux";
-import { selectToken } from "../store/user/selectors";
+import { selectToken, selectUser } from "../store/user/selectors";
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
@@ -32,6 +32,7 @@ export default function ButtonAppBar() {
   const navigate = useNavigate();
 
   const token = useSelector(selectToken());
+  const profile = useSelector(selectUser());
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -68,7 +69,7 @@ export default function ButtonAppBar() {
             <Button
               sx={loginBtnStyle}
               variant="outlined"
-              onClick={() => navigate("/user")}
+              onClick={() => navigate(`/user/${profile.id}`)}
             >
               <FavoriteBorderIcon />
             </Button>

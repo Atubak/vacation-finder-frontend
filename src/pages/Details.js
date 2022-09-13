@@ -40,7 +40,9 @@ export default function Details() {
 
   useEffect(() => {
     if (!profile) return setHeart(false);
-    const locIdArray = profile?.locations.map((loc) => loc.id);
+    const locIdArray = profile?.locations?.map((loc) => loc.id);
+
+    if (!locIdArray) return setHeart(false);
 
     locIdArray?.every((locId) => locId !== selectedLocation.id)
       ? setHeart(false)
