@@ -61,9 +61,7 @@ export default function PicAndDescr({ userPage }) {
           gridRowStart: "2",
           gridRowEnd: "3",
           position: "relative",
-          cursor: "pointer",
         }}
-        onClick={() => console.log("hellooo")}
       >
         {profile.id === userPage.id ? (
           <input

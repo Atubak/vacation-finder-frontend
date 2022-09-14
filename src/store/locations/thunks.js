@@ -6,6 +6,7 @@ import axios from "axios";
 //actions
 import {
   storeAllCategories,
+  storeLocationUsers,
   storeResults,
   storeSelectedLocation,
 } from "./slice";
@@ -70,6 +71,17 @@ export const postFav = () => async (dispatch, getState) => {
     );
     dispatch(tokenStillValid({ user: response.data.userWithLocs }));
     dispatch(storeSelectedLocation(response.data.locWithDataPoints));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const getLocationUsers = (locationId) => async (dispatch, getState) => {
+  try {
+    const response = await axios.get(`${apiUrl}/locations/${locationId}/users`);
+
+    console.log(response.data);
+    dispatch(storeLocationUsers(response.data));
   } catch (e) {
     console.log(e.message);
   }

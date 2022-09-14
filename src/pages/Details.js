@@ -10,7 +10,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 //components
-import { LocationPictures, Map } from "../components";
+import { LocationPictures, Map, LocationUsers } from "../components";
 
 import { useSelector, useDispatch } from "react-redux";
 //selectors
@@ -87,7 +87,17 @@ export default function Details() {
         <Map />
       </div>
 
-      <LocationPictures />
+      <div
+        id="LocationUsersAndPics"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-around",
+        }}
+      >
+        <LocationUsers />
+        <LocationPictures />
+      </div>
     </div>
   );
 }
