@@ -8,3 +8,5 @@ export const selectQueryCategories = () => (reduxState) =>
   reduxState.locations.query.categories;
 export const selectQueryResults = () => (reduxState) =>
   reduxState.locations.query.results;
+export const selectResultsAmt = () => (reduxState) =>
+  reduxState.locations.query.resultsAmt;

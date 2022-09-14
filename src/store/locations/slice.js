@@ -6,6 +6,7 @@ const initialState = {
   query: {
     categories: [], //array of selected category names
     results: [], //array of range objects with datapoints
+    resultsAmt: null,
   },
 };
 
@@ -32,6 +33,9 @@ export const locationsSlice = createSlice({
     storeResults: (state, action) => {
       state.query.results = action.payload;
     },
+    storeResultsAmt: (state, action) => {
+      state.query.resultsAmt = action.payload;
+    },
     clearResults: (state, action) => {
       state.query.results = [];
     },
@@ -53,6 +57,7 @@ export const {
   removeQueryCategory,
   storeSelectedLocation,
   storeLocationUsers,
+  storeResultsAmt,
 } = locationsSlice.actions;
 
 export default locationsSlice.reducer;
