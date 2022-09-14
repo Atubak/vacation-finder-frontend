@@ -86,7 +86,7 @@ export default function ButtonAppBar() {
                 Logout
               </Button>
             ) : (
-              <Link to={"/login"}>
+              <Link to={"/login"} style={{ textDecoration: "none" }}>
                 <Button variant="contained" sx={loginBtnStyle}>
                   Log In
                 </Button>
