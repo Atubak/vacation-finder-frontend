@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 import logoWordGood from "../icons/logocow-color.png";
+import iconWord from "../icons/logo-word-good.png";
 
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -19,6 +20,8 @@ const appBarStyle = {
   backgroundColor: "#fcfcfd",
   color: "#5d5957",
   boxShadow: "0px -5px 20px black",
+  display: "flex",
+  justifyContent: "space-between",
 };
 
 const loginBtnStyle = {
@@ -38,63 +41,58 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={appBarStyle}>
         <Toolbar>
-          <img src={logoWordGood} alt="" height="64px" />
-          <Typography
-            style={{ textAlign: "left", color: `${appBarStyle.color}` }}
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
+          <Link
+            to={"/"}
+            style={{
+              color: `${appBarStyle.color}`,
+              textDecoration: `underline overline ${appBarStyle.color}`,
+              textUnderlineOffset: "4px",
+              width: "250px",
+            }}
           >
-            <Link
-              to={"/"}
-              style={{
-                color: `${appBarStyle.color}`,
-                textDecoration: `underline overline ${appBarStyle.color}`,
-                textUnderlineOffset: "4px",
-              }}
-            >
-              VacaLoca
-            </Link>
-          </Typography>
+            <img src={iconWord} alt="" height="50px" />
+          </Link>
+
           <Typography
-            style={{ textAlign: "left" }}
+            style={{ textAlign: "center", width: "250px" }}
             variant="p"
             component="div"
             sx={{ flexGrow: 1 }}
           >
             The Vacation Locator
           </Typography>
-
-          {token ? (
-            <Button
-              sx={loginBtnStyle}
-              variant="outlined"
-              onClick={() => navigate(`/user/${profile.id}`)}
-            >
-              <FavoriteBorderIcon />
-            </Button>
-          ) : (
-            ""
-          )}
-
-          {token ? (
-            <Button
-              sx={loginBtnStyle}
-              variant="outlined"
-              onClick={() => {
-                dispatch(logOut());
-                navigate("/");
-              }}
-            >
-              Logout
-            </Button>
-          ) : (
-            <Link to={"/login"}>
-              <Button variant="contained" sx={loginBtnStyle}>
-                Log In
+          <div id="userBtns" style={{ width: "250px", textAlign: "end" }}>
+            {token ? (
+              <Button
+                sx={loginBtnStyle}
+                variant="outlined"
+                onClick={() => navigate(`/user/${profile.id}`)}
+              >
+                <FavoriteBorderIcon />
               </Button>
-            </Link>
-          )}
+            ) : (
+              ""
+            )}
+
+            {token ? (
+              <Button
+                sx={loginBtnStyle}
+                variant="outlined"
+                onClick={() => {
+                  dispatch(logOut());
+                  navigate("/");
+                }}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Link to={"/login"}>
+                <Button variant="contained" sx={loginBtnStyle}>
+                  Log In
+                </Button>
+              </Link>
+            )}
+          </div>
         </Toolbar>
       </AppBar>
     </Box>
