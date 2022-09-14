@@ -23,7 +23,7 @@ export default function Results() {
     <div id="Resultspage">
       <div id="resultsAmount">
         <h2>
-          Found {resultsAmt ?? 0} location{resultsAmt < 1 ? "" : "s"}
+          Found {resultsAmt ?? 0} location{resultsAmt === 1 ? "" : "s"}
         </h2>
         {resultsAmt > 5 ? (
           <p>click "generate search" again if you want a new selection</p>
@@ -53,7 +53,7 @@ export default function Results() {
           {/* consist of a list of cards with each location and some basic info */}
           {/* locations should have a like button on them, might be good to make it a component so that details page can also use it */}
           {typeof queryResults === "string" ? (
-            <p>{queryResults}, try removing it</p>
+            <p>{queryResults}, try removing one category</p>
           ) : (
             queryResults.map((result, index) => {
               return (

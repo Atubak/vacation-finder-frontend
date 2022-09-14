@@ -148,7 +148,6 @@ export const postPic = (url) => async (dispatch, getState) => {
 };
 
 export const postDescr = (descr) => async (dispatch, getState) => {
-  console.log(descr);
   const token = selectToken()(getState());
 
   try {
@@ -158,7 +157,6 @@ export const postDescr = (descr) => async (dispatch, getState) => {
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
-    console.log(response.data);
     if (response.data === "success") {
       dispatch(storeDescr(descr));
       return dispatch(storeUserPage(getState().user.profile));

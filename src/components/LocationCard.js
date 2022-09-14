@@ -22,6 +22,14 @@ export default function LocationCard({ result }) {
   useEffect(() => {
     const getLocationInfo = async () => {
       try {
+        //if a location already has an id that means its not necessary to call the geocoding api
+        if (result.id) {
+          return setLocationInfo({
+            info: result.info,
+            country_code: result.country_code,
+          });
+        }
+
         const response = await axios.get(
           `https://api.geoapify.com/v1/geocode/reverse?lat=${result.dataPoints[0].lat}&lon=${result.dataPoints[0].lon}&type=city&apiKey=${geoCodingAPIKey}`
         );
@@ -33,7 +41,7 @@ export default function LocationCard({ result }) {
           /undefined,/g,
           ""
         );
-
+        console.log("useeffect of lcoationcard", result);
         setLocationInfo({ info, country_code });
       } catch (e) {
         console.log(e.message);
@@ -49,7 +57,11 @@ export default function LocationCard({ result }) {
         sx={{ maxWidth: 150 }}
         onClick={() => {
           dispatch(
-            storeSelectedLocation({ ...result, info: locationInfo.info })
+            storeSelectedLocation({
+              ...result,
+              info: locationInfo.info,
+              country_code: locationInfo.country_code,
+            })
           );
           navigate(`/details`);
         }}

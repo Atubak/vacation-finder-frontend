@@ -47,7 +47,6 @@ export default function LocationPictures() {
     };
 
     getPics();
-    console.log("getpics useeffect called called");
   }, [dataPoints]);
 
   useEffect(() => {
