@@ -13,7 +13,7 @@ export default function SingleSelectedCategory({ cat }) {
   return (
     <div
       className="SingleSelectedCategory"
-      style={{ width: "128px", margin: "10px auto" }}
+      style={{ width: "100%", margin: "10px auto" }}
     >
       <Button
         style={{ color: "#6c85bd", backgroundColor: "#fcfcfd" }}

@@ -52,7 +52,15 @@ export default function SelectedCategories() {
   }, [dispatch, navigate, allowNavigation, queryResults]);
 
   return (
-    <div id="selectedCategories">
+    <div
+      id="selectedCategories"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "200px",
+      }}
+    >
       <h4>Categories selected: </h4>
       {/* insert here a list of all clicked cats, same as above */}
       {/* should be possible to remove them */}
