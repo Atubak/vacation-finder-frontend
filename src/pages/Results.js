@@ -23,7 +23,6 @@ export default function Results() {
       style={{
         display: "flex",
         justifyContent: "space-around",
-        height: `calc(100vh - 64px - 20px)`,
       }}
     >
       <div

@@ -63,7 +63,9 @@ export default function User() {
 
       <Friends userPage={userPage} />
 
-      {addIcon ? (
+      {profile.id === userPage.id ? (
+        ""
+      ) : addIcon ? (
         <PersonAddAlt1Icon
           style={{
             gridColumnStart: "2",

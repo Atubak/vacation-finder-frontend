@@ -73,7 +73,18 @@ export default function Details() {
                 onClick={() => dispatch(postFav())}
               >
                 {!profile ? (
-                  ""
+                  <p
+                    style={{
+                      color: "#96a7cf",
+                      backgroundColor: "#edd273",
+                      padding: "5px 0px",
+                      borderRadius: "10px",
+                      cursor: "default",
+                      margin: "0",
+                    }}
+                  >
+                    you need to be logged in to save locations
+                  </p>
                 ) : heart ? (
                   <FavoriteIcon sx={{ fontSize: 40 }} />
                 ) : (

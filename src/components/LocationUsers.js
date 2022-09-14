@@ -21,7 +21,7 @@ export default function LocationUsers() {
       <Card style={{ padding: "20px" }}>
         <h3>Users that like this Location</h3>
         {!showUsers
-          ? "loading..."
+          ? "you're the first to discover this location!"
           : selectedLocation?.locationUsers.map((user) => (
               <div
                 className="followedUser"
