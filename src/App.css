@@ -1,6 +1,11 @@
 .App {
   text-align: center;
   color: #5d5957;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  position: relative;
 }
 
 .App-logo {
@@ -53,6 +58,13 @@
   background: #fcfcfd;
   overflow: hidden;
   z-index: -1;
+  /* background-image: url(); */
+  filter: blur(8px);
+  background: url("./icons/logocow-color.png") no-repeat center center fixed;
+  -webkit-background-size: 50%;
+  -moz-background-size: 50%;
+  -o-background-size: 50%;
+  background-size: 50%;
 }
 
 .background span {

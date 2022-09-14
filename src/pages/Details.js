@@ -10,7 +10,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 //components
-import { LocationPictures, Map } from "../components";
+import { LocationPictures, Map, LocationUsers } from "../components";
 
 import { useSelector, useDispatch } from "react-redux";
 //selectors
@@ -39,12 +39,15 @@ export default function Details() {
   const [heart, setHeart] = useState(false);
 
   useEffect(() => {
-    const locIdArray = profile.locations.map((loc) => loc.id);
+    if (!profile) return setHeart(false);
+    const locIdArray = profile?.locations?.map((loc) => loc.id);
 
-    locIdArray.every((locId) => locId !== selectedLocation.id)
+    if (!locIdArray) return setHeart(false);
+
+    locIdArray?.every((locId) => locId !== selectedLocation.id)
       ? setHeart(false)
       : setHeart(true);
-  }, [selectedLocation, profile.locations]);
+  }, [selectedLocation, profile?.locations, profile]);
 
   return (
     <div id="Details" style={detailPStyle}>
@@ -65,10 +68,13 @@ export default function Details() {
                 style={{
                   flex: "1",
                   color: `${heart ? "#ff6992" : "black"}`,
+                  cursor: "pointer",
                 }}
                 onClick={() => dispatch(postFav())}
               >
-                {heart ? (
+                {!profile ? (
+                  ""
+                ) : heart ? (
                   <FavoriteIcon sx={{ fontSize: 40 }} />
                 ) : (
                   <FavoriteBorderIcon sx={{ fontSize: 40 }} />
@@ -81,7 +87,17 @@ export default function Details() {
         <Map />
       </div>
 
-      <LocationPictures />
+      <div
+        id="LocationUsersAndPics"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-around",
+        }}
+      >
+        <LocationUsers />
+        <LocationPictures />
+      </div>
     </div>
   );
 }

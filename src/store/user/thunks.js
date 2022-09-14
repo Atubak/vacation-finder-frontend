@@ -3,7 +3,14 @@ import axios from "axios";
 import { selectToken } from "./selectors";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
-import { loginSuccess, logOut, tokenStillValid } from "./slice";
+import {
+  loginSuccess,
+  logOut,
+  storeDescr,
+  storePic,
+  tokenStillValid,
+  storeUserPage,
+} from "./slice";
 
 export const signUp = (name, email, password, isRealtor) => {
   return async (dispatch, getState) => {
@@ -116,4 +123,93 @@ export const getUserWithStoredToken = () => {
       dispatch(appDoneLoading());
     }
   };
+};
+
+export const postPic = (url) => async (dispatch, getState) => {
+  const token = selectToken()(getState());
+
+  try {
+    const response = await axios.patch(
+      `${apiUrl}/user/pic`,
+      { imgUrl: url },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    console.log(response.data);
+    if (response.data === "success") {
+      dispatch(storePic(url));
+      return dispatch(storeUserPage(getState().user.profile));
+    }
+
+    dispatch(showMessageWithTimeout("danger", false, response.data, 2000));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const postDescr = (descr) => async (dispatch, getState) => {
+  console.log(descr);
+  const token = selectToken()(getState());
+
+  try {
+    const response = await axios.patch(
+      `${apiUrl}/user/descr`,
+      { description: descr },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    console.log(response.data);
+    if (response.data === "success") {
+      dispatch(storeDescr(descr));
+      return dispatch(storeUserPage(getState().user.profile));
+    }
+    dispatch(showMessageWithTimeout("danger", false, response.data, 2000));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const getUserPage = (id) => async (dispatch, getState) => {
+  try {
+    const response = await axios.get(`${apiUrl}/user/${id}`);
+
+    dispatch(storeUserPage(response.data));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const addFollow = (id) => async (dispatch, getState) => {
+  const token = selectToken()(getState());
+
+  try {
+    const response = await axios.patch(
+      `${apiUrl}/user/add`,
+      { addedUser: id },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    console.log(response.data);
+    if (response.data.msg === "deleted") {
+      dispatch(
+        showMessageWithTimeout(
+          "danger",
+          false,
+          "stopped following this user",
+          2000
+        )
+      );
+    }
+    if (response.data.msg === "added") {
+      dispatch(
+        showMessageWithTimeout("success", false, "following user", 2000)
+      );
+    }
+
+    console.log("jaaaaaaaaaaaaaaaaaaaaaa", response.data.newProfile);
+    dispatch(tokenStillValid({ user: response.data.newProfile }));
+    dispatch(storeUserPage(response.data.newUserPage));
+  } catch (e) {
+    console.log(e.message);
+  }
 };

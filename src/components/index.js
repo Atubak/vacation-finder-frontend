@@ -5,6 +5,9 @@ import SingleSelectedCategory from "./SingleSelectedCategory";
 import Map from "./Map";
 import LocationPictures from "./LocationPictures";
 import { MessageBox } from "./MessageBox";
+import PicAndDescr from "./PicAndDescr";
+import Friends from "./Friends";
+import LocationUsers from "./LocationUsers";
 
 export {
   ButtonAppBar,
@@ -14,4 +17,7 @@ export {
   Map,
   LocationPictures,
   MessageBox,
+  PicAndDescr,
+  Friends,
+  LocationUsers,
 };

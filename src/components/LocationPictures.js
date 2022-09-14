@@ -67,7 +67,7 @@ export default function LocationPictures() {
   }, [index]);
 
   const slideShow = {
-    margin: "auto auto",
+    margin: "0 auto",
     overflow: "hidden",
     maxWidth: "300px",
   };
