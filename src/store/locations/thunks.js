@@ -9,6 +9,7 @@ import {
   storeLocationUsers,
   storeResults,
   storeSelectedLocation,
+  storeResultsAmt,
 } from "./slice";
 import { showMessageWithTimeout } from "../appState/thunks";
 import { tokenStillValid } from "../user/slice";
@@ -29,7 +30,14 @@ export const getResults = () => async (dispatch, getState) => {
   try {
     const results = await axios.post(`${apiUrl}/locations`, { categories });
     console.log(results.data);
-    dispatch(storeResults(results.data));
+    //if the returned value is a string that means there are no valid locations
+    if (typeof results.data === "string") {
+      dispatch(storeResults(results.data));
+      return dispatch(storeResultsAmt(0));
+    }
+
+    dispatch(storeResults(results.data.randomLocationsArr));
+    dispatch(storeResultsAmt(results.data.resultsAmt));
   } catch (e) {
     console.log(e.message);
   }
@@ -80,7 +88,6 @@ export const getLocationUsers = (locationId) => async (dispatch, getState) => {
   try {
     const response = await axios.get(`${apiUrl}/locations/${locationId}/users`);
 
-    console.log(response.data);
     dispatch(storeLocationUsers(response.data));
   } catch (e) {
     console.log(e.message);

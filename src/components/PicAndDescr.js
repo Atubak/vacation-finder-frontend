@@ -114,7 +114,9 @@ export default function PicAndDescr({ userPage }) {
               position: "relative",
             }}
           >
-            <Typography variant="body2">{userPage?.description}</Typography>
+            <Typography variant="body2">
+              {userPage?.description ?? "Hey, a new user. Welcome!"}
+            </Typography>
           </CardContent>
           <CardActions
             style={{ display: "flex", justifyContent: "flex-end", flex: "1" }}
@@ -158,6 +160,7 @@ export default function PicAndDescr({ userPage }) {
               rows="10"
               placeholder="write down whatever you want here"
               onChange={(e) => setDescr(e.target.value)}
+              onKeyDown={(e) => (e.key === "Enter" ? submit(e) : "")}
               value={descr}
             ></textarea>
             <br />

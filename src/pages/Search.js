@@ -38,26 +38,38 @@ export default function Search() {
       <div id="categorySelection">
         <h3>Click on the categories you want at your ~VacaLoca~</h3>
         {/* should get a list of all cats from redux on pageload and then map over it to render them on page, might need to be a different component*/}
-        {allCategories.map((cat, index) => {
-          return (
-            <div
-              className="searchCategory"
-              key={index}
-              style={{ margin: "10px 0" }}
-            >
-              <Button
-                style={btnStyle}
-                variant="contained"
-                onClick={(e) => {
-                  dispatch(storeQueryCategories(cat));
+        <div
+          id="allCategories"
+          style={{
+            height: "700px",
+            display: "flex",
+            flexDirection: "column",
+            flexWrap: "wrap",
+          }}
+        >
+          {allCategories.map((cat, index) => {
+            return (
+              <div
+                className="searchCategory"
+                key={index}
+                style={{
+                  margin: "10px 0",
                 }}
-                disabled={chosenCategories.includes(cat)}
               >
-                {cat}
-              </Button>
-            </div>
-          );
-        })}
+                <Button
+                  style={btnStyle}
+                  variant="contained"
+                  onClick={(e) => {
+                    dispatch(storeQueryCategories(cat));
+                  }}
+                  disabled={chosenCategories.includes(cat)}
+                >
+                  {cat}
+                </Button>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <SelectedCategories />

@@ -81,6 +81,8 @@ export default function SelectedCategories() {
       >
         <Box sx={style}>
           <CircularProgress />
+          <br />
+          looking for a matching location...
         </Box>
       </Modal>
     </div>
