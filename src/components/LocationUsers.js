@@ -12,17 +12,27 @@ export default function LocationUsers() {
   const [showUsers, setShowUsers] = useState(false);
 
   useEffect(() => {
-    if (selectedLocation.locationUsers) return setShowUsers(true);
+    //if there are location users, show the list
+    if (selectedLocation?.locationUsers?.length > 0) return setShowUsers(true);
     dispatch(getLocationUsers(selectedLocation.id));
   }, [dispatch, selectedLocation]);
 
   return (
     <div id="LocationUsers">
-      <Card style={{ padding: "20px" }}>
+      <Card
+        style={{
+          maxHeight: "200px",
+          padding: "20px",
+          // overflowY: `${
+          //   selectedLocation?.locationUsers?.length > 3 ? "scroll" : "hidden"
+          // }`,
+          overflowY: "auto",
+        }}
+      >
         <h3>Users that like this Location</h3>
         {!showUsers
           ? "you're the first to discover this location!"
-          : selectedLocation?.locationUsers.map((user) => (
+          : selectedLocation?.locationUsers?.map((user) => (
               <div
                 className="followedUser"
                 style={{

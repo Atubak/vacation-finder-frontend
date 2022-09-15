@@ -18,7 +18,7 @@ export default function LocationPictures() {
   useEffect(() => {
     const getPics = () => {
       let newPics = [];
-      dataPoints.forEach(async (dataP) => {
+      dataPoints?.forEach(async (dataP) => {
         try {
           //get the img data for the dataPoints
           const response = await axios.get(
@@ -69,10 +69,11 @@ export default function LocationPictures() {
     margin: "0 auto",
     overflow: "hidden",
     maxWidth: "300px",
+    maxHeight: "400px",
   };
   const slide = {
     display: "inline-block",
-    // height: "400px",
+    maxHeight: "400px",
     minWidth: "300px",
     borderRadius: "40px",
     position: "relative",
@@ -97,7 +98,11 @@ export default function LocationPictures() {
         {pics.map((pic, index) => {
           return (
             <div className="slide" key={index} style={slide}>
-              <img src={pic.url} alt={pic.caption} style={{ width: "300px" }} />
+              <img
+                src={pic.url}
+                alt={pic.caption}
+                style={{ maxWidth: "300px", maxHeight: "200px" }}
+              />
               <p style={{ whiteSpace: "normal" }}>{pic.caption}</p>
             </div>
           );

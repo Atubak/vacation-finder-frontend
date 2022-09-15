@@ -66,6 +66,7 @@ export const postFav = () => async (dispatch, getState) => {
           2000
         )
       );
+      dispatch(storeSelectedLocation(response.data.locWithDataPoints));
       return dispatch(tokenStillValid({ user: response.data.userWithLocs }));
     }
 
@@ -77,6 +78,7 @@ export const postFav = () => async (dispatch, getState) => {
         2000
       )
     );
+    console.log(response.data);
     dispatch(tokenStillValid({ user: response.data.userWithLocs }));
     dispatch(storeSelectedLocation(response.data.locWithDataPoints));
   } catch (e) {

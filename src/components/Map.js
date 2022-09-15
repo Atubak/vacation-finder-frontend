@@ -14,7 +14,7 @@ export default function Map() {
   const [showMap, setShowMap] = useState(false);
 
   useEffect(() => {
-    if (selectedLocation) return setShowMap(true);
+    if (selectedLocation?.dataPoints) return setShowMap(true);
   }, [selectedLocation]);
 
   return (
@@ -26,10 +26,10 @@ export default function Map() {
           style={{
             border: "2px solid",
             borderRadius: "10px",
-            height: "50vw",
-            width: "60vw",
-            maxWidth: "1000px",
-            maxHeight: "800px",
+            height: "500px",
+            width: "500px",
+            // maxWidth: "1000px",
+            // maxHeight: "500px",
             // margin: "0px 19.5%",
           }}
           center={[

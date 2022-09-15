@@ -22,13 +22,11 @@ import { postFav } from "../store/locations/thunks";
 
 const locInfoStyle = {
   margin: "50px",
-  display: "flex",
-  flexDirection: "column",
-  gap: "30px",
 };
 
 const detailPStyle = {
-  display: "flex",
+  width: "80vw",
+  margin: "0 auto",
 };
 
 export default function Details() {
@@ -51,64 +49,78 @@ export default function Details() {
 
   return (
     <div id="Details" style={detailPStyle}>
-      <div id="locationInfo" style={locInfoStyle}>
-        <div id="infoText">
-          <Card sx={{ maxWidth: "60vw" }}>
-            <CardContent sx={{ display: "flex", alignItems: "center" }}>
-              <Typography
-                sx={{ fontSize: 24, flex: 3 }}
-                color="black"
-                gutterBottom
-                component="h1"
-              >
-                {selectedLocation.info}
-              </Typography>
-              <div
-                id="heartIcon"
-                style={{
-                  flex: "1",
-                  color: `${heart ? "#ff6992" : "black"}`,
-                  cursor: "pointer",
-                }}
-                onClick={() => dispatch(postFav())}
-              >
-                {!profile ? (
-                  <p
-                    style={{
-                      color: "#96a7cf",
-                      backgroundColor: "#edd273",
-                      padding: "5px 0px",
-                      borderRadius: "10px",
-                      cursor: "default",
-                      margin: "0",
-                    }}
-                  >
-                    you need to be logged in to save locations
-                  </p>
-                ) : heart ? (
-                  <FavoriteIcon sx={{ fontSize: 40 }} />
-                ) : (
-                  <FavoriteBorderIcon sx={{ fontSize: 40 }} />
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+      {!selectedLocation.id ? (
+        "restart from the search page, there's nothing here right now"
+      ) : (
+        <>
+          <div id="locationInfo" style={locInfoStyle}>
+            <Card style={{ width: "100%", margin: "0 auto" }}>
+              <CardContent sx={{ display: "flex", alignItems: "center" }}>
+                <Typography
+                  sx={{ fontSize: 24, flex: 3 }}
+                  color="black"
+                  gutterBottom
+                  component="h1"
+                >
+                  {selectedLocation.info}
+                </Typography>
+                <div
+                  id="heartIcon"
+                  style={{
+                    flex: "1",
+                    color: `${heart ? "#ff6992" : "black"}`,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => dispatch(postFav())}
+                >
+                  {!profile ? (
+                    <p
+                      style={{
+                        color: "#96a7cf",
+                        backgroundColor: "#edd273",
+                        padding: "5px 0px",
+                        borderRadius: "10px",
+                        cursor: "default",
+                        margin: "0",
+                      }}
+                    >
+                      you need to be logged in to save locations
+                    </p>
+                  ) : heart ? (
+                    <FavoriteIcon sx={{ fontSize: 40 }} />
+                  ) : (
+                    <FavoriteBorderIcon sx={{ fontSize: 40 }} />
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          <div
+            id="MapAndLocUsersAndPics"
+            style={{
+              display: "flex",
+              marginBottom: "50px",
+              gap: "40px",
+              justifyContent: "space-around",
+              height: "500px",
+            }}
+          >
+            <Map />
 
-        <Map />
-      </div>
-
-      <div
-        id="LocationUsersAndPics"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-around",
-        }}
-      >
-        <LocationUsers />
-        <LocationPictures />
-      </div>
+            <div
+              id="LocationUsersAndPics"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <LocationPictures />
+              <LocationUsers />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

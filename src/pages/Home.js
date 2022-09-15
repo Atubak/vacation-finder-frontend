@@ -11,13 +11,13 @@ export default function Home() {
     <div
       id="Homepage"
       style={{
-        padding: "50px 10%",
+        padding: "50px 30%",
         display: "flex",
         flexDirection: "column",
         gap: "30px",
       }}
     >
-      <div id="bigButton">
+      <div id="bigButton" style={{}}>
         <Link
           to={"/search"}
           style={{ textDecoration: "none", cursor: "pointer" }}
@@ -27,14 +27,14 @@ export default function Home() {
               width: "150px",
               height: "150px",
               backgroundColor: "#96a7cf",
-              color: "#edd273",
+              color: "#ffffff",
             }}
           >
             Start Searching
           </Fab>
         </Link>
         <br />
-        <small>no account needed to search</small>
+        <small style={{ color: "#5d5957" }}>no account needed to search</small>
       </div>
       <div id="introductoryDiv">
         <Card style={{ backgroundColor: "#c3cce3" }}>
