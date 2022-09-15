@@ -49,8 +49,8 @@ export default function Details() {
 
   return (
     <div id="Details" style={detailPStyle}>
-      {!selectedLocation.id ? (
-        "restart from the search page, there's nothing here right now"
+      {!selectedLocation.info ? (
+        "oops something went wrong!"
       ) : (
         <>
           <div id="locationInfo" style={locInfoStyle}>
