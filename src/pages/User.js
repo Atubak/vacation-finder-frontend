@@ -48,12 +48,12 @@ export default function User() {
 
   useEffect(() => {
     //if the user doesnt follow any user yet, skip this useEffect
-    if (profile.followedUser.length < 1) return setAddIcon(true);
+    if (profile?.followedUser?.length < 1) return setAddIcon(true);
 
     //if the user is already being followed, make the btn show a remove icon
-    if (!profile.followedUser.every((el) => el.id !== userPage?.id))
+    if (!profile?.followedUser.every((el) => el.id !== userPage?.id))
       return setAddIcon(false);
-  }, [profile.followedUser, userPage?.id]);
+  }, [profile?.followedUser, userPage?.id]);
 
   return !userPage ? (
     "loading"
@@ -63,7 +63,7 @@ export default function User() {
 
       <Friends userPage={userPage} />
 
-      {profile.id === userPage.id ? (
+      {profile?.id === userPage?.id ? (
         ""
       ) : addIcon ? (
         <PersonAddAlt1Icon

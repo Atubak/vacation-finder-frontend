@@ -33,7 +33,11 @@ export default function Search() {
   return (
     <div
       id="Searchpage"
-      style={{ display: "flex", justifyContent: "space-around" }}
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        minWidth: "950px",
+      }}
     >
       <div id="categorySelection">
         <h3>Click on the categories you want at your ~VacaLoca~</h3>

@@ -5,7 +5,7 @@ export default function Footer() {
     <div
       id="Footer"
       style={{
-        backgroundColor: "#c3cce3",
+        backgroundColor: "#5d5957",
         borderTop: "1px solid",
         height: "50px",
         display: "flex",

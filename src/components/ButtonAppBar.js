@@ -61,18 +61,27 @@ export default function ButtonAppBar() {
           >
             The Vacation Locator
           </Typography>
-          <div id="userBtns" style={{ width: "250px", textAlign: "end" }}>
+
+          <div id="userBtns" style={{ width: "auto", textAlign: "end" }}>
             {token ? (
               <Button
                 sx={loginBtnStyle}
                 variant="outlined"
                 onClick={() => navigate(`/user/${profile.id}`)}
               >
-                <FavoriteBorderIcon />
+                Account
               </Button>
             ) : (
               ""
             )}
+
+            <Button
+              sx={loginBtnStyle}
+              variant="outlined"
+              onClick={() => navigate(`/search`)}
+            >
+              search
+            </Button>
 
             {token ? (
               <Button
