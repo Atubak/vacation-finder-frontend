@@ -25,10 +25,10 @@ export const getAllCategories = () => async (dispatch, getState) => {
 };
 
 export const getResults = () => async (dispatch, getState) => {
-  const categories = getState().locations.query.categories;
+  const categories = getState().locations.query.categories.join(",");
   console.log(categories);
   try {
-    const results = await axios.post(`${apiUrl}/locations`, { categories });
+    const results = await axios.get(`${apiUrl}/locations?cats=${categories}`);
     console.log(results.data);
     //if the returned value is a string that means there are no valid locations
     if (typeof results.data === "string") {
