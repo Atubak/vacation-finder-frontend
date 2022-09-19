@@ -10,6 +10,7 @@ import {
   storeResults,
   storeSelectedLocation,
   storeResultsAmt,
+  storeRecentLocations,
 } from "./slice";
 import { showMessageWithTimeout } from "../appState/thunks";
 import { tokenStillValid } from "../user/slice";
@@ -95,3 +96,14 @@ export const getLocationUsers = (locationId) => async (dispatch, getState) => {
     console.log(e.message);
   }
 };
+
+
+export const getRecentLocs = () => async (dispatch, getState) => {
+  try {
+    const response = await axios.get(`${apiUrl}/locations/recent`);
+
+    dispatch(storeRecentLocations(response.data));
+  } catch(e) {
+      console.log(e.message);
+  }
+} 

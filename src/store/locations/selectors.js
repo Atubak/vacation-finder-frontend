@@ -10,3 +10,4 @@ export const selectQueryResults = () => (reduxState) =>
   reduxState.locations.query.results;
 export const selectResultsAmt = () => (reduxState) =>
   reduxState.locations.query.resultsAmt;
+export  const selectRecentLocs = () => (reduxState) => reduxState.locations.recentLocations;
