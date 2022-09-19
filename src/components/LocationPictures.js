@@ -1,6 +1,4 @@
-import { Slideshow } from "@mui/icons-material";
 import axios from "axios";
-import md5 from "blueimp-md5";
 
 import { useEffect, useState } from "react";
 
@@ -50,6 +48,7 @@ export default function LocationPictures() {
   }, [dataPoints]);
 
   useEffect(() => {
+    if (pics.length === 1) return setIndex(0);
     setTimeout(
       () =>
         setIndex((prevIndex) =>

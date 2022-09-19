@@ -8,6 +8,7 @@ const initialState = {
     results: [], //array of range objects with datapoints
     resultsAmt: null,
   },
+  recentLocations: [],
 };
 
 export const locationsSlice = createSlice({
@@ -45,6 +46,9 @@ export const locationsSlice = createSlice({
     storeLocationUsers: (state, action) => {
       state.selectedLocation.locationUsers = action.payload;
     },
+    storeRecentLocations: (state, action) => {
+      state.recentLocations = action.payload;
+    }
   },
 });
 
@@ -58,6 +62,7 @@ export const {
   storeSelectedLocation,
   storeLocationUsers,
   storeResultsAmt,
+  storeRecentLocations,
 } = locationsSlice.actions;
 
 export default locationsSlice.reducer;

@@ -60,6 +60,14 @@ export default function Footer() {
       >
         Powered by Wikidata
       </a>
+      <a
+        target="_blank"
+        
+        rel="noreferrer"
+      >
+        Logo by Celia Ramos
+      </a>
+      
     </div>
   );
 }

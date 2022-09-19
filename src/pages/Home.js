@@ -5,6 +5,7 @@ import iconColor from "../icons/logocow-color.png";
 //mui
 import Fab from "@mui/material/Fab";
 import { Card } from "@mui/material";
+import { RecentLocations } from "../components";
 
 export default function Home() {
   return (
@@ -47,6 +48,7 @@ export default function Home() {
           <p>Discover the new vacation spots that you never knew existed.</p>
         </Card>
       </div>
+      <RecentLocations />
       <div id="persuasionDiv">
         <Card style={{ backgroundColor: "#96a7cf" }}>
           <h2>Make an account to save your new vacation spots</h2>

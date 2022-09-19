@@ -8,6 +8,7 @@ import { MessageBox } from "./MessageBox";
 import PicAndDescr from "./PicAndDescr";
 import Friends from "./Friends";
 import LocationUsers from "./LocationUsers";
+import RecentLocations from "./RecentLocations";
 
 export {
   ButtonAppBar,
@@ -20,4 +21,5 @@ export {
   PicAndDescr,
   Friends,
   LocationUsers,
+  RecentLocations,
 };
