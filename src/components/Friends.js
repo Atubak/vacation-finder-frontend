@@ -1,7 +1,5 @@
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectUsersFollowedByThisUser } from "../store/user/selectors";
-import { useEffect } from "react";
+
 //mui
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
@@ -34,6 +32,7 @@ export default function Friends({ userPage }) {
             flex: "4",
             display: "flex",
             justifyContent: "flex-start",
+            flexDirection: "column",
             alignItems: "center",
             position: "relative",
           }}

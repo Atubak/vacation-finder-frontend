@@ -1,6 +1,4 @@
-// const apiUrl = require("../../config/constants").apiUrl;
 import { apiUrl } from "../../config/constants";
-// const axios = require("axios");
 import axios from "axios";
 
 //actions
@@ -97,13 +95,12 @@ export const getLocationUsers = (locationId) => async (dispatch, getState) => {
   }
 };
 
-
 export const getRecentLocs = () => async (dispatch, getState) => {
   try {
     const response = await axios.get(`${apiUrl}/locations/recent`);
 
     dispatch(storeRecentLocations(response.data));
-  } catch(e) {
-      console.log(e.message);
+  } catch (e) {
+    console.log(e.message);
   }
-} 
+};
