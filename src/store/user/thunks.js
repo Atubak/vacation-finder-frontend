@@ -20,7 +20,6 @@ export const signUp = (name, email, password, isRealtor) => {
         name,
         email,
         password,
-        isRealtor,
       });
 
       dispatch(
