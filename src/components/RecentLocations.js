@@ -27,7 +27,7 @@ export default function RecentLocations() {
           style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}
         >
           {recentLocs.length < 1
-            ? "loading..."
+            ? "No locations yet..."
             : recentLocs.map((loc) => {
                 return <LocationCard key={loc.id} result={loc} />;
               })}
