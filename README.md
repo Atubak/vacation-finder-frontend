@@ -1,4 +1,34 @@
-# Getting Started with Create React App
+# Welcome to VacaLoca aka the Vacation Locator
+
+VacaLoca lets a user find a new vacation spot when they don't want to go to the same old places they've already been to before. </br> </br>
+The user can pick any category available and it will return a list of valid results. Each location is presented with the closest town, a map that shows all the selected points and any users that have already favorited the same location. </br>
+The most challenging part of this process was reformatting the huge amount of data into something usable and then writing the algorithm that would take that data and turn it into separate locations.
+</br></br>
+As proof of the skills learned in the Codaisseur 10-week full-stack, I made this project that combines all the different tech that we learned in the course and some that I learned to use in the process of developing it. 
+
+### Stack:
+-JavaScript-React-MUI-Redux-Axios-Express-PostgreSql-Sequelize-
+
+[Backend Repo](https://github.com/Atubak/vacation-finder-backend.git)
+
+
+[Database Diagram](https://github.com/Atubak/vacation-finder-frontend/blob/main/meta/dbDiagram.png)
+</br>
+[Wireframe](https://wireframepro.mockflow.com/view/MUGUPIRLhob)
+
+#### some GIFs:
+[searching for a location and adding it to your favorites list](https://res.cloudinary.com/djsz833wc/image/upload/v1664468610/VacaLoca%20Users/userlocation_a06e7u.gif)
+</br>
+[following another user and seeing their locations](https://res.cloudinary.com/djsz833wc/image/upload/v1664468638/VacaLoca%20Users/adduser_bb0iwh.gif)
+
+### some screenshots:
+<img width="800px" src="https://github.com/Atubak/vacation-finder-frontend/blob/main/meta/githubScreen.png"></img>
+<img width="800px" src="https://github.com/Atubak/vacation-finder-frontend/blob/main/meta/githubscrn2.png"></img>
+<img width="800px" src="https://github.com/Atubak/vacation-finder-frontend/blob/main/meta/githubscrn3.png"></img>
+<img width="800px" src="https://github.com/Atubak/vacation-finder-frontend/blob/main/meta/githubscrn4.png"></img>
+<img width="800px" src="https://github.com/Atubak/vacation-finder-frontend/blob/main/meta/githubscrn5.png"></img>
+
+# Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
