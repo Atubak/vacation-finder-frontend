@@ -6,12 +6,14 @@ The most challenging part of this process was reformatting the huge amount of da
 </br></br>
 As proof of the skills learned in the Codaisseur 10-week full-stack, I made this project that combines all the different tech that we learned in the course and some that I learned to use in the process of developing it. 
 
+---
+
 ### Stack:
 -JavaScript-React-MUI-Redux-Axios-Express-PostgreSql-Sequelize-
 
+### useful links:
 [Backend Repo](https://github.com/Atubak/vacation-finder-backend.git)
-
-
+</br>
 [Database Diagram](https://github.com/Atubak/vacation-finder-frontend/blob/main/meta/dbDiagram.png)
 </br>
 [Wireframe](https://wireframepro.mockflow.com/view/MUGUPIRLhob)
